@@ -53,7 +53,7 @@ public class NewFillUpServlet extends HttpServlet {
 			
 			
 			//Fetch the list of available stations
-			ArrayList<ServiceStation> stationList = Program.getStationsList("Gas", true);
+			ArrayList<ServiceStation> stationList = Program.getStationsList(user, password);
 			String stationOptions="<option>Select One</option>";
 			
 			for(int index=1; index < stationList.size(); index++){//using < rather than <= since the list has a dummy value at list[0]
@@ -75,7 +75,9 @@ public class NewFillUpServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		String user = (String)session.getAttribute("user");
+		String password = (String)session.getAttribute("password");
 		
 		int carID = Integer.parseInt(request.getParameter("car"));
 		
@@ -103,7 +105,7 @@ public class NewFillUpServlet extends HttpServlet {
 
 		
 		//System.out.println("Trying the insert.");
-		Program.insertFillUp(carID, stationID, purchaseDate, gallonsPurchased, isFillUp, tripMileage, odometerReading, cost);
+		Program.insertFillUp(user, password, carID, stationID, purchaseDate, gallonsPurchased, isFillUp, tripMileage, odometerReading, cost);
 		//System.out.println("We should, in theory, have finished the insert.");
 		
 		response.sendRedirect("/CarDB/Main");

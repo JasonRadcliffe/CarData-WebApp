@@ -26,7 +26,9 @@ public class NewStationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet for NewStationServlet is running.");
 		HttpSession session = request.getSession();
-		if(session.getAttribute("user") == null)
+		String user = (String)session.getAttribute("user");
+		String password = (String)session.getAttribute("password");
+		if(user == null)
 			response.sendRedirect("/CarDB/Home");
 		else
 			request.getRequestDispatcher("/public/newStation.jsp").forward(request, response);
@@ -38,6 +40,9 @@ public class NewStationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String user = (String)session.getAttribute("user");
+		String password = (String)session.getAttribute("password");
 		
 		String name = request.getParameter("name");
 		request.setAttribute("name", name);
@@ -45,7 +50,7 @@ public class NewStationServlet extends HttpServlet {
 		String location = request.getParameter("location");
 		request.setAttribute("location", location);
 		
-		Program.insertStation(name, location);
+		Program.insertStation(user, password, name, location);
 
 
 		

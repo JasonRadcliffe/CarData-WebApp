@@ -36,33 +36,23 @@ public class Program {
 			//Check the username and password, return true if it's a match
 			if(thisUser.getUsername().equals(username))
 				if(thisUser.getPassword().equals(password))
-					return true;				
-			
-			
+					return true;
 			
 			if((User)session.get(User.class, index+1) == null ){
 				another = false;
 			}
 			
 		}
-		
-		
-		
-
-		
-		
-		
 		session.close();
 		
 		return false;
-		
-		
-		
 	}
 	
 	
-	public static void insertCar(String licensePlate, String make, String model, int modelYear, double odometerReading){
-		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(new String(), new String());
+	public static void insertCar(String user, String password, String licensePlate,
+			String make, String model, int modelYear, double odometerReading){
+		
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -77,8 +67,8 @@ public class Program {
 	}
 	
 	
-	public static void insertStation(String name, String location){
-		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(new String(), new String());		
+	public static void insertStation(String user, String password, String name, String location){
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -95,10 +85,10 @@ public class Program {
 	
 	
 	
-	public static void insertFillUp(int carID, int stationID, Date purchaseDate, double gallonsPurchased, boolean isFillUp,
-			double tripMileage, double odometerReading, double cost){
+	public static void insertFillUp(String user, String password, int carID, int stationID, Date purchaseDate, double gallonsPurchased,
+			boolean isFillUp, double tripMileage, double odometerReading, double cost){
 		
-		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(new String(), new String());
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -125,10 +115,10 @@ public class Program {
 	
 	
 	
-	public static void insertRepair(int carID, int stationID, Date purchaseDate, double odometerReading,
-			double cost, String description, String mechanicName){
+	public static void insertRepair(String user, String password, int carID, int stationID, Date purchaseDate,
+			double odometerReading,	double cost, String description, String mechanicName){
 		
-		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(new String(), new String());
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -180,13 +170,10 @@ public class Program {
 	}
 	
 	
-	//Gets the list of applicable stations. Contexts are:
-		//Gas
-		//Repair
-		//All
-	public static ArrayList<ServiceStation> getStationsList(String context, boolean recent){
+	//Gets the list of applicable stations
+	public static ArrayList<ServiceStation> getStationsList(String user, String password){
 	
-		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(new String(), new String());		
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
 		Session session = sessionFactory.openSession();
 		
 		ArrayList<ServiceStation> allList = new ArrayList();
@@ -203,39 +190,24 @@ public class Program {
 		}
 		boolean[] alreadyUsed = new boolean[allIndex+1];
 		
+		ArrayList<ServiceStation> gasList = new ArrayList();
+		gasList.add(0,emptyStation);
+		another = true;
 		
-		switch (context){
-		case "Gas":
-			ArrayList<ServiceStation> gasList = new ArrayList();
-			gasList.add(0,emptyStation);
-			another = true;
-			
-			for(int index=1; another; index++){
-				FillUp fill = (FillUp)session.get(FillUp.class, index);
-				if(!alreadyUsed[fill.getStationID()]){
-					gasList.add(1, allList.get(fill.getStationID()) );
-				}
-				
-				if((FillUp)session.get(FillUp.class, index+1) == null ){
-					another = false;
-				}
+		for(int index=1; another; index++){
+			FillUp fill = (FillUp)session.get(FillUp.class, index);
+			if(!alreadyUsed[fill.getStationID()]){
+				gasList.add(1, allList.get(fill.getStationID()) );
 			}
 			
-			
-			session.close();
-			return gasList;
-		
-		case "Reapir":
-			session.close();			
-			return allList;
-			
-			
-		default:
-			session.close();
-			return allList;
-			
-		
+			if((FillUp)session.get(FillUp.class, index+1) == null ){
+				another = false;
+			}
 		}
+		
+		
+		session.close();
+		return gasList;
 		//Loops until there are no more cars in the car table
 		
 		

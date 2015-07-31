@@ -30,7 +30,9 @@ public class NewCarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet for CarServlet is running.");
 		HttpSession session = request.getSession();
-		if(session.getAttribute("user") == null)
+		String user = (String)session.getAttribute("user");
+		String password = (String)session.getAttribute("password");
+		if(user == null)
 			response.sendRedirect("/CarDB/Home");
 		else
 			request.getRequestDispatcher("/public/newCar.jsp").forward(request, response);
@@ -42,6 +44,10 @@ public class NewCarServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String user = (String)session.getAttribute("user");
+		String password = (String)session.getAttribute("password");
+		
 		
 		String licensePlate = request.getParameter("licensePlate");
 		request.setAttribute("licensePlate", licensePlate);
@@ -58,7 +64,7 @@ public class NewCarServlet extends HttpServlet {
 		double odometerReading = Double.parseDouble(request.getParameter("odometerReading"));
 		request.setAttribute("odometerReading", odometerReading);
 		
-		Program.insertCar(licensePlate, make, model, modelYear, odometerReading);
+		Program.insertCar(user, password, licensePlate, make, model, modelYear, odometerReading);
 
 
 		response.sendRedirect("/CarDB/Home");
