@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("DoGet method of the loginServlet is running");
 		
 		HttpSession session = request.getSession();
-		System.out.println("Here's what I got for username:" + session.getAttribute("user"));
 		request.getRequestDispatcher("/public/index.jsp").forward(request, response);
 		
 		

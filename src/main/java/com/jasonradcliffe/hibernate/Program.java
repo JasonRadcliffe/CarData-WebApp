@@ -170,7 +170,35 @@ public class Program {
 	}
 	
 	
-	//Gets the list of applicable stations
+	//Gets the list of  stations
+	public static ArrayList<ServiceStation> getStationsList(String user, String password){
+	
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
+		Session session = sessionFactory.openSession();
+		
+		ArrayList<ServiceStation> allList = new ArrayList();
+		
+		ServiceStation emptyStation = new ServiceStation();
+		allList.add(0, emptyStation);
+		boolean another = true;
+		int allIndex;
+		for(allIndex=1; another; allIndex++){
+			allList.add(allIndex, (ServiceStation)session.get(ServiceStation.class, allIndex));
+			if((ServiceStation)session.get(ServiceStation.class, allIndex+1) == null ){
+				another = false;
+			}
+		}
+		
+		session.close();
+		return allList;
+		
+	}
+	
+	/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//TODO: impliment selective stationlist getting based on contexts:
+	 * Gas
+	 * Repair
+	 * All
 	public static ArrayList<ServiceStation> getStationsList(String user, String password){
 	
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
@@ -205,16 +233,13 @@ public class Program {
 			}
 		}
 		
-		
 		session.close();
 		return gasList;
-		//Loops until there are no more cars in the car table
-		
-		
-		
-		
-		
+		+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
 	}
+	
+	
+	*/
 	
 	
 	
