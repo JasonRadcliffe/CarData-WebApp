@@ -35,6 +35,8 @@ public class NewFillUpServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user = (String)session.getAttribute("user");
 		String password = (String)session.getAttribute("password");
+		System.out.println("Here's the username I got:" + user);
+		System.out.println("Here's the password I got:" + password);
 		
 		if(user == null)
 			response.sendRedirect("/CarDB/Home");

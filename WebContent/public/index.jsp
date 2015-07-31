@@ -33,7 +33,7 @@
 	
 	<!-- Adding the is-active class to current page -->
 	<script type="text/javascript">	
-	$('#NewFillUpLink').addClass('is-active');
+	$('#HomeLink').addClass('is-active');
 	</script>
 	
 

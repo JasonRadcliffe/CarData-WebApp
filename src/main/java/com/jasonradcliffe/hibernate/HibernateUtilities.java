@@ -12,14 +12,13 @@ public class HibernateUtilities {
 	private static ServiceRegistry serviceRegistry;
 	
 	
-	@SuppressWarnings("deprecation")
 	public static SessionFactory getSessionFactory(String user, String pass){
 		
 		try{
 			
 			Configuration configuration = new Configuration().configure();
-			
 			configuration.setProperty("hibernate.connection.username", user);
+			
 			configuration.setProperty("hibernate.connection.password", pass);
 			
 			serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
