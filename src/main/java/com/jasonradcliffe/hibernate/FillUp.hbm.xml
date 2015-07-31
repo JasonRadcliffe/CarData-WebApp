@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.jasonradcliffe.hibernate">
+
+    <class name="FillUp" table="FillUp">
+ 		<id name="PurchaseID" column="PurchaseID">
+            <generator class="identity"/>
+        </id>
+        <property name="CarID" column="CarID" />
+        <property name="StationID" column="StationID"/>
+        <property name="PurchaseDate" column="PurchaseDate"/>
+        <property name="GallonsPurchased" column="GallonsPurchased"/>
+        <property name="IsFillUp" column="IsFillUp"/>
+        <property name="TripMileage" column="TripMileage"/>
+        <property name="OdometerReading" column="OdometerReading"/>
+        <property name="Cost" column="Cost"/>
+	</class>
+
+</hibernate-mapping>
