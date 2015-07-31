@@ -33,11 +33,14 @@ public class NewFillUpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		if(session.getAttribute("user") == null)
+		String user = (String)session.getAttribute("user");
+		String password = (String)session.getAttribute("password");
+		
+		if(user == null)
 			response.sendRedirect("/CarDB/Home");
 		else{			
 			//Fetch the list of available cars
-			ArrayList<Car> carList = Program.getCarsList();
+			ArrayList<Car> carList = Program.getCarsList(user, password);
 			String carOptions="<option>Select One</option>";
 			
 			for(int index=1; index < carList.size(); index++){//using < rather than <= since the list has a dummy value at list[0]

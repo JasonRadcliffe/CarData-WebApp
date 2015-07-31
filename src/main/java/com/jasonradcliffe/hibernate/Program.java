@@ -2,10 +2,7 @@ package com.jasonradcliffe.hibernate;
 
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
-import java.util.TimeZone;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -156,9 +153,10 @@ public class Program {
 	
 	
 	
-	public static ArrayList<Car> getCarsList(){
+	public static ArrayList<Car> getCarsList(String user, String password){
 		
-		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(new String(), new String());		
+		
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
 		Session session = sessionFactory.openSession();
 		
 		ArrayList<Car> list = new ArrayList();
