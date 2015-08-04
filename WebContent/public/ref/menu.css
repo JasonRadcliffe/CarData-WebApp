@@ -614,7 +614,7 @@ footer[role="contentinfo"] {
     margin-top: -0.625em;
     border-top: 0.625em transparent solid;
     border-bottom: 0.625em transparent solid;
-    border-right: 0.625em white solid;
+    border-right: 0.625em #d21 solid;
   }
   #nav li a {
     padding: 0.85714em 2.14286em;
