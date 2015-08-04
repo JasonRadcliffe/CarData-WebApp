@@ -48,7 +48,7 @@
         <article class="block prose">
 
             <h1>Enter the Details of Your New Car</h1>
-		  	<form method="post" action="http://localhost:8080/CarDB/NewCar">
+		  	<form method="post" action="NewCar">
 		  	<formElement>
 		  		License Plate:
 		  		<input name="licensePlate" type="text" size="11"/><br>

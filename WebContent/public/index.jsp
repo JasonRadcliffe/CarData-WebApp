@@ -44,7 +44,7 @@
         <article class="block prose">
 
             <h1>Enter Your Username and Password</h1>
-		  	<form method="post" action="http://localhost:8080/CarDB/login">
+		  	<form method="post" action="login">
 		  	<formElement>
 		  		Username
 		  		<input type = "text" name="user" style="width:170px;"/><br>

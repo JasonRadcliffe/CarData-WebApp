@@ -44,7 +44,8 @@
         <article class="block prose">
 
             <h1>Enter the Details of the Repair</h1>
-		  	<form id="repairForm" method="post" action="http://localhost:8080/CarDB/Repair">
+            <!-- changing the action from http://localhost:8080/CarDB/Repair -->
+		  	<form id="repairForm" method="post" action="Repair">
 		  	<formElement>
 		  		Car
 		  		<select name="car">

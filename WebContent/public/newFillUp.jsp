@@ -44,7 +44,7 @@
         <article class="block prose">
 
             <h1>Enter the Details of the Fill Up</h1>
-		  	<form method="post" action="http://localhost:8080/CarDB/FillUp">
+		  	<form method="post" action="FillUp">
 		  	<formElement>
 		  		Car
 		  		<select name="car">

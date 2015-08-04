@@ -48,7 +48,7 @@
         <article class="block prose">
 
             <h1>Enter the Details for the Service Station</h1>
-		  	<form method="post" action="http://localhost:8080/CarDB/New-Station">
+		  	<form method="post" action="New-Station">
 		  	<formElement>
 		  		Name:
 		  		<input name="name" type="text" size="20"/><br>
