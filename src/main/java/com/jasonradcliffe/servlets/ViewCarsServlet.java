@@ -15,20 +15,20 @@ import com.jasonradcliffe.hibernate.Program;
 /**
  * Servlet implementation class CarServlet
  */
-public class NewCarServlet extends HttpServlet {
+public class ViewCarsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewCarServlet() {
+    public ViewCarsServlet() {
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet for CarServlet is running.");
+		System.out.println("doGet for ViewCarsServlet is running.");
 		HttpSession session = request.getSession();
 		String user = (String)session.getAttribute("user");
 		String password = (String)session.getAttribute("password");
@@ -36,7 +36,7 @@ public class NewCarServlet extends HttpServlet {
 		if(user == null)
 			response.sendRedirect("/CarDB/Home");
 		else
-			request.getRequestDispatcher("/public/newCar.jsp").forward(request, response);
+			request.getRequestDispatcher("/public/viewCars.jsp").forward(request, response);
 		
 		
 	}
@@ -45,31 +45,6 @@ public class NewCarServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String user = (String)session.getAttribute("user");
-		String password = (String)session.getAttribute("password");
-		
-		
-		String licensePlate = request.getParameter("licensePlate");
-		request.setAttribute("licensePlate", licensePlate);
-		
-		String make = request.getParameter("make");
-		request.setAttribute("make", make);
-		
-		String model = request.getParameter("model");
-		request.setAttribute("model", model);
-		
-		int modelYear = Integer.parseInt(request.getParameter("modelYear"));
-		request.setAttribute("modelYear", modelYear);
-		
-		double odometerReading = Double.parseDouble(request.getParameter("odometerReading"));
-		request.setAttribute("odometerReading", odometerReading);
-		
-		Program.insertCar(user, password, licensePlate, make, model, modelYear, odometerReading);
-
-
-		response.sendRedirect("/CarDB/Home");
-		
 		
 	}
 

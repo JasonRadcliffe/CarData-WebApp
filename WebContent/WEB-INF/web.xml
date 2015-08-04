@@ -41,6 +41,17 @@
   	<url-pattern>/New-Car</url-pattern>
   	<url-pattern>/NewCar</url-pattern>
   </servlet-mapping>
+    
+    
+  <servlet>
+  	<servlet-name>ViewCarsServlet</servlet-name>
+  	<servlet-class>com.jasonradcliffe.servlets.ViewCarsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ViewCarsServlet</servlet-name>
+  	<url-pattern>/View-Cars</url-pattern>
+  	<url-pattern>/ViewCars</url-pattern>
+  </servlet-mapping>
   
   <servlet>
   	<servlet-name>NewDriverServlet</servlet-name>

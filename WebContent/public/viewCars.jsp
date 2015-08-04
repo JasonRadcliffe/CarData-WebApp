@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-    <title>New Car</title>
+    <title>View Cars</title>
     <link href='http://fonts.googleapis.com/css?family=Raleway:700,400' rel='stylesheet' type='text/css'>
     
     <script src="public/ref/jquery-2.1.4.min.js" type="text/javascript"></script>
@@ -36,8 +36,7 @@
 	
 	<!-- Adding the is-active class to current page -->
 	<script type="text/javascript">
-	
-	$('#NewCarLink').addClass('is-active');
+	$('#ViewCarsLink').addClass('is-active');
 	</script>
 	
 
@@ -47,7 +46,7 @@
     <div id="main" role="main">
         <article class="block prose">
 
-            <h1>Enter the Details of Your New Car</h1>
+            <h1>Here Is the Table of Cars:</h1>
             <p>Testing: <a href="/CarDB/New-Car?action=newjason">New Car</a></p>
 		  	<form method="post" action="NewCar">
 		  	<formElement>
