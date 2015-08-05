@@ -3,7 +3,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.jasonradcliffe.hibernate.Car" %>
+<%@page import="com.jasonradcliffe.hibernate.ServiceStation" %>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 	
 	<!-- Adding the is-active class to current page -->
 	<script type="text/javascript">
-	$('#ViewCarsLink').addClass('is-active');
+	$('#ViewStationsLink').addClass('is-active');
 	</script>
 	
 
@@ -48,22 +48,17 @@
     <div id="main" role="main">
         <article class="block prose">
 
-            <h1>Table of Cars:</h1>
-            <table class="viewAllTable" id="viewCarsTable" border="1">
-            	<th>Number</th><th>License Plate</th><th>Make</th><th>Model</th><th>Year</th><th>Odometer</th>
+            <h1>Table of Service Stations:</h1>
+            <table class="viewAllTable" id="viewStationsTable" border="1">
+            	<th>Number</th><th>Station Name</th><th>Address</th>
             	<%
-            	List<Car> carsList = (List<Car>)request.getAttribute("viewCarsList");
-            	for(int index=0; index < carsList.size(); index++){
-            		Car currentCar = (Car)carsList.get(index);
+            	List<ServiceStation> stationsList = (List<ServiceStation>)request.getAttribute("viewStationsList");
+            	for(int index=0; index < stationsList.size(); index++){
+            		ServiceStation currentStation = (ServiceStation)stationsList.get(index);
            		%><tr>
-            		<td><%out.println(currentCar.getCarID()); %></td>
-            		<td><%out.println(currentCar.getLicensePlate()); %></td>
-            		<td><%out.println(currentCar.getMake()); %></td>
-            		<td><%out.println(currentCar.getModel()); %></td>
-            		<td><%out.println(currentCar.getModelYear()); %></td>
-            		<td><%out.println(currentCar.getOdometerReading()); %></td>
-            		
-            		
+            		<td><%out.println(currentStation.getStationID()); %></td>
+            		<td><%out.println(currentStation.getName()); %></td>
+            		<td><%out.println(currentStation.getLocation()); %></td>
            		</tr><%
             	}
             	%>

@@ -76,6 +76,21 @@
   
   
   <servlet>
+  	<servlet-name>ViewStationsServlet</servlet-name>
+  	<servlet-class>com.jasonradcliffe.servlets.ViewStationsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ViewStationsServlet</servlet-name>
+  	<url-pattern>/View-Stations</url-pattern>
+  	<url-pattern>/ViewStations</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  <servlet>
   	<servlet-name>NewFillUpServlet</servlet-name>
   	<servlet-class>com.jasonradcliffe.servlets.NewFillUpServlet</servlet-class>
   </servlet>
