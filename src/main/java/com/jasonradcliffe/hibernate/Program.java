@@ -1,9 +1,10 @@
 package com.jasonradcliffe.hibernate;
 
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -66,19 +67,19 @@ public class Program {
 		session.close();
 	}
 	
-	public static ArrayList<Car> viewCars(String user, String password){
+	public static List<Car> viewCars(String user, String password){
 		
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		ArrayList<Car> carsList = new ArrayList();
+		Query query = session.createQuery("from Car");
+		List<Car> data  = query.list();
 		
-		Query query = session.createSQLQuery("SELECT * FROM CarDB.Car");
-		carsList = new ArrayList<Car>(query.list());
+		session.getTransaction().commit();
+		session.close();
 		
-		
-		return carsList;
+		return data;
 	}
 	
 	
@@ -96,6 +97,23 @@ public class Program {
 		
 		session.getTransaction().commit();
 		session.close();
+	}
+	
+	
+public static List<ServiceStation> viewStations(String user, String password){
+		
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		
+		Query query = session.createQuery("from ServiceStation");
+		List<ServiceStation> data  = query.list();
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		return data;
 	}
 	
 	

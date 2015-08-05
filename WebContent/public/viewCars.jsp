@@ -3,6 +3,8 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="com.jasonradcliffe.hibernate.Car" %>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,9 +49,30 @@
         <article class="block prose">
 
             <h1>Here is the Table of Cars:</h1>
+            <table class="viewAllTable" id="viewCarsTable" border="1">
+            	<th>Number</th><th>License Plate</th><th>Make</th><th>Model</th><th>Year</th><th>Odometer</th>
+            	<%
+            	List<Car> carsList = (List<Car>)request.getAttribute("viewCarsList");
+            	for(int index=0; index < carsList.size(); index++){
+            		Car currentCar = (Car)carsList.get(index);
+           		%><tr>
+            		<td><%out.println(currentCar.getCarID()); %></td>
+            		<td><%out.println(currentCar.getLicensePlate()); %></td>
+            		<td><%out.println(currentCar.getMake()); %></td>
+            		<td><%out.println(currentCar.getModel()); %></td>
+            		<td><%out.println(currentCar.getModelYear()); %></td>
+            		<td><%out.println(currentCar.getOdometerReading()); %></td>
+            		
+            		
+           		</tr><%
+            	}
+            	%>
+            	
+            	
+            </table>
             
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br>
+            <br><br>
 
         </article>
     </div>
