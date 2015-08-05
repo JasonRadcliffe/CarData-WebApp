@@ -1,6 +1,7 @@
 package com.jasonradcliffe.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jasonradcliffe.hibernate.Car;
 import com.jasonradcliffe.hibernate.Program;
 
 /**
@@ -35,9 +37,11 @@ public class ViewCarsServlet extends HttpServlet {
 		
 		if(user == null)
 			response.sendRedirect("/CarDB/Home");
-		else
+		else{
+			ArrayList<Car> carsList = Program.viewCars(user, password);
+			System.out.println("Retrieved: " + carsList.size() + " cars.");
 			request.getRequestDispatcher("/public/viewCars.jsp").forward(request, response);
-		
+		}
 		
 	}
 

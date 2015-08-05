@@ -46,33 +46,8 @@
     <div id="main" role="main">
         <article class="block prose">
 
-            <h1>Here Is the Table of Cars:</h1>
-            <p>Testing: <a href="/CarDB/New-Car?action=newjason">New Car</a></p>
-		  	<form method="post" action="NewCar">
-		  	<formElement>
-		  		License Plate:
-		  		<input name="licensePlate" type="text" size="11"/><br>
-		  	</formElement>
-		  	<formElement>
-		  		Make:
-		  		<input name="make" type="text" size="14"/><br>
-		  	</formElement>
-		  	<formElement>
-		  		Model:
-		  		<input name="model" type="text" size="14"/><br>
-	  		</formElement>
-	  		<formElement>
-		  		Model Year:
-		  		<input name="modelYear" type="number" max="2020" min = "1950"/><br>
-	  		</formElement>
-	  		<formElement>  		
-		 		Odometer Reading
-		 		<input name="odometerReading" type="number"  style="width:150px;" max="999999" step=".1"><br>
-	 		</formElement>
-	 		<formElement>		 		
-		 		<input type="submit" value="Submit"/>
-	 		</formElement>
-		  	</form>
+            <h1>Here is the Table of Cars:</h1>
+            
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br>
 

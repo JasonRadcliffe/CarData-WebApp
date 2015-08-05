@@ -1,9 +1,11 @@
 package com.jasonradcliffe.hibernate;
 
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -62,8 +64,21 @@ public class Program {
 		
 		session.getTransaction().commit();
 		session.close();
+	}
+	
+	public static ArrayList<Car> viewCars(String user, String password){
+		
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		ArrayList<Car> carsList = new ArrayList();
+		
+		Query query = session.createSQLQuery("SELECT * FROM CarDB.Car");
+		carsList = new ArrayList<Car>(query.list());
 		
 		
+		return carsList;
 	}
 	
 	
