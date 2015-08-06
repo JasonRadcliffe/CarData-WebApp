@@ -44,7 +44,7 @@
         <article class="block prose">
 
             <h1>Enter Your Username and Password</h1>
-		  	<form method="post" action="login">
+		  	<form method="post" action="login" onsubmit="if(this.password.value == ''){return false;}">
 		  	<formElement>
 		  		Username
 		  		<input type = "text" name="user" style="width:170px;"/><br>
