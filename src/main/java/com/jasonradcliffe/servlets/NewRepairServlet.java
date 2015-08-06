@@ -3,7 +3,6 @@ package com.jasonradcliffe.servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -106,7 +105,7 @@ public class NewRepairServlet extends HttpServlet {
 		Program.insertRepair(user, password, carID, stationID, purchaseDate, odometerReading, cost, description, mechanicName);
 		System.out.println("We should, in theory, have finished the insert.");
 		
-		response.sendRedirect("/CarDB/Home");
+		response.sendRedirect("/CarDB/Main");
 		
 	}
 

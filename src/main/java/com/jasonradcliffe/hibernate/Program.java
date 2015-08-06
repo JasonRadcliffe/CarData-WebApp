@@ -14,15 +14,16 @@ import org.hibernate.SessionFactory;
 
 public class Program {
 	
+	
+	//TODO: Plug the real db info back in to avoid throwing an exception on the 
+	//getSessionFactory(u, p) method.
+	
 	//Checks the database for a user with the strings provided
 	public static boolean isValidUser(String username, String password){
 		
 		//standard beginnings - using the username and pass for the database connection also		
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(username, password);
-		for(int temp = 0; temp < 1000000; temp++){
-			temp = temp+1;
-			temp--;
-		}
+		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		

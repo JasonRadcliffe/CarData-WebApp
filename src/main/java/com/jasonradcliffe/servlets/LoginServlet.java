@@ -3,8 +3,6 @@ package com.jasonradcliffe.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +29,6 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("DoGet method of the loginServlet is running");
 		
-		HttpSession session = request.getSession();
 		request.getRequestDispatcher("/public/index.jsp").forward(request, response);
 		
 		
@@ -51,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", username);
 			session.setAttribute("password", password);
-			//setting session to expiry in 20 mins
+			//setting session to expire in 20 mins
 			session.setMaxInactiveInterval(20*60);
 			
 			

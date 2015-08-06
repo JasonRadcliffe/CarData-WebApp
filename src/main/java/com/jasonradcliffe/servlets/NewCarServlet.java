@@ -1,10 +1,8 @@
 package com.jasonradcliffe.servlets;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +29,6 @@ public class NewCarServlet extends HttpServlet {
 		System.out.println("doGet for CarServlet is running.");
 		HttpSession session = request.getSession();
 		String user = (String)session.getAttribute("user");
-		String password = (String)session.getAttribute("password");
 		
 		if(user == null)
 			response.sendRedirect("/CarDB/Home");
@@ -68,7 +65,7 @@ public class NewCarServlet extends HttpServlet {
 		Program.insertCar(user, password, licensePlate, make, model, modelYear, odometerReading);
 
 
-		response.sendRedirect("/CarDB/Home");
+		response.sendRedirect("/CarDB/View-Cars");
 		
 		
 	}

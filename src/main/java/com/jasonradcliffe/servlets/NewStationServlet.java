@@ -1,10 +1,8 @@
 package com.jasonradcliffe.servlets;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +25,6 @@ public class NewStationServlet extends HttpServlet {
 		System.out.println("doGet for NewStationServlet is running.");
 		HttpSession session = request.getSession();
 		String user = (String)session.getAttribute("user");
-		String password = (String)session.getAttribute("password");
 		if(user == null)
 			response.sendRedirect("/CarDB/Home");
 		else
@@ -56,7 +53,7 @@ public class NewStationServlet extends HttpServlet {
 		
 		//TODO: redirect to View Stations page
 		
-		response.sendRedirect("/CarDB/Home");
+		response.sendRedirect("/CarDB/View-Stations");
 		
 		
 		
