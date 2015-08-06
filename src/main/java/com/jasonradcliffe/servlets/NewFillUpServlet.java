@@ -44,9 +44,16 @@ public class NewFillUpServlet extends HttpServlet {
 			//Fetch the list of available cars
 			List<Car> carList = Program.getCarsList(user, password);
 			String carOptions="<option>Select One</option>";
-			
+			Car currentCar;
+			String carModel;
+			int carYear;
+			int carID;
 			for(int index=0; index < carList.size(); index++){
-				carOptions+="<option value=\"" + index + "\">" +  carList.get(index).getModel() + "</option>";
+				currentCar = carList.get(index);
+				carModel = currentCar.getModel();
+				carYear = currentCar.getModelYear();
+				carID = currentCar.getCarID();
+				carOptions+="<option value=\"" + carID + "\">" +  carModel + " - \'" + carYear % 100 + "</option>";
 			}
 			
 			
@@ -57,15 +64,28 @@ public class NewFillUpServlet extends HttpServlet {
 			//Fetch the list of available stations
 			List<ServiceStation> stationList = Program.getStationsList(user, password);
 			String stationOptions="<option>Select One</option>";
-			
+			ServiceStation currentStation;
+			String stationName;
+			String stationLoc;
+			int stationID;
+			int endPosition; //endPosition stuff is to prevent trying to access more of a string than there is - in the case of a super short address string
 			for(int index=0; index < stationList.size(); index++){
-				stationOptions+="<option value=\"" + index + "\">" +  stationList.get(index).getName() + " - " + stationList.get(index).getLocation()  + "</option>";
+				currentStation = stationList.get(index);
+				stationName = currentStation.getName();
+				stationLoc = currentStation.getLocation();
+				stationID = currentStation.getStationID();
+				if(stationLoc.length() < 15){
+					endPosition = stationLoc.length() - 1; 
+				}
+				else{
+					endPosition = 15;
+				}
+				stationOptions+="<option value=\"" + stationID + "\">" +  stationName + " - " + stationLoc.substring(0, endPosition)  + "...</option>";
 			}
 			
 			
 			//Pushing across the list of cars
 			request.setAttribute("stationOptions", stationOptions);
-			
 					
 			//Redirect to the .jsp page
 			request.getRequestDispatcher("/public/newFillUp.jsp").forward(request, response);
