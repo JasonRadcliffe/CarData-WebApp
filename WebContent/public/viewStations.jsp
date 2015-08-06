@@ -50,20 +50,23 @@
 
             <h1>Table of Service Stations:</h1>
             <table class="viewAllTable" id="viewStationsTable" border="1">
+            <thead>
             	<th>Number</th><th>Station Name</th><th>Address</th>
+           	</thead>
+           	<tbody>
             	<%
             	List<ServiceStation> stationsList = (List<ServiceStation>)request.getAttribute("viewStationsList");
             	for(int index=0; index < stationsList.size(); index++){
             		ServiceStation currentStation = (ServiceStation)stationsList.get(index);
            		%><tr>
-            		<td><%out.println(currentStation.getStationID()); %></td>
-            		<td><%out.println(currentStation.getName()); %></td>
-            		<td><%out.println(currentStation.getLocation()); %></td>
+            		<td data-label="Number"><%out.println(currentStation.getStationID()); %></td>
+            		<td data-label="Station Name"><%out.println(currentStation.getName()); %></td>
+            		<td data-label="Address"><%out.println(currentStation.getLocation()); %></td>
            		</tr><%
             	}
             	%>
             	
-            	
+           	</tbody>
             </table>
             
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -50,25 +50,27 @@
 
             <h1>Table of Cars:</h1>
             <table class="viewAllTable" id="viewCarsTable" border="1">
-            	<th>Number</th><th>License Plate</th><th>Make</th><th>Model</th><th>Year</th><th>Odometer</th>
+            <thead>
+            	<th>License Plate</th><th>Make</th><th>Model</th><th>Year</th><th>Odometer</th>
+           	</thead>
+           	<tbody>
             	<%
             	List<Car> carsList = (List<Car>)request.getAttribute("viewCarsList");
             	for(int index=0; index < carsList.size(); index++){
             		Car currentCar = (Car)carsList.get(index);
            		%><tr>
-            		<td><%out.println(currentCar.getCarID()); %></td>
-            		<td><%out.println(currentCar.getLicensePlate()); %></td>
-            		<td><%out.println(currentCar.getMake()); %></td>
-            		<td><%out.println(currentCar.getModel()); %></td>
-            		<td><%out.println(currentCar.getModelYear()); %></td>
-            		<td><%out.println(currentCar.getOdometerReading()); %></td>
+            		<td data-label="License Plate"><%out.println(currentCar.getLicensePlate()); %></td>
+            		<td data-label="Make"><%out.println(currentCar.getMake()); %></td>
+            		<td data-label="Model"><%out.println(currentCar.getModel()); %></td>
+            		<td data-label="Year"><%out.println(currentCar.getModelYear()); %></td>
+            		<td data-label="Odometer"><%out.println(currentCar.getOdometerReading()); %></td>
             		
             		
            		</tr><%
             	}
             	%>
             	
-            	
+           	</tbody>
             </table>
             
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
