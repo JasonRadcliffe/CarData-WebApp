@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,10 +39,10 @@ public class NewRepairServlet extends HttpServlet {
 			response.sendRedirect("/CarDB/Home");
 		else{
 			//Fetch the list of available cars
-			ArrayList<Car> carList = Program.getCarsList(user, password);
+			List<Car> carList = Program.getCarsList(user, password);
 			String carOptions="<option>Select One</option>";
 			
-			for(int index=1; index < carList.size(); index++){//using < rather than <= since the list has a dummy value at list[0]
+			for(int index=0; index < carList.size(); index++){
 				carOptions+="<option value=\"" + index + "\">" +  carList.get(index).getModel() + "</option>";
 			}
 			
@@ -51,10 +52,10 @@ public class NewRepairServlet extends HttpServlet {
 			
 			
 			//Fetch the list of available stations
-			ArrayList<ServiceStation> stationList = Program.getStationsList(user, password);
+			List<ServiceStation> stationList = Program.getStationsList(user, password);
 			String stationOptions="<option>Select One</option>";
 			
-			for(int index=1; index < stationList.size(); index++){//using < rather than <= since the list has a dummy value at list[0]
+			for(int index=0; index < stationList.size(); index++){
 				stationOptions+="<option value=\"" + index + "\">" +  stationList.get(index).getName() + " - " + stationList.get(index).getLocation()  + "</option>";
 			}
 			

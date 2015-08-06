@@ -19,35 +19,32 @@ public class Program {
 		
 		//standard beginnings - using the username and pass for the database connection also		
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(username, password);
+		for(int temp = 0; temp < 1000000; temp++){
+			temp = temp+1;
+			temp--;
+		}
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		//Create array to hold all users
-		ArrayList<User> userList = new ArrayList<User>();
+		//uses HQL instead of SQL
+		Query query = session.createQuery("from User");
+		List<User> userList = query.list();
 		
-		//Add in empty user
-		User emptyUser = new User();
-		userList.add(0, emptyUser);
-		
-		//Loops until the database has no value at the next index position
-		boolean another = true;
-		for(int index = 1; another; index++){
-			User thisUser = (User)session.get(User.class, index);
-			userList.add(index, thisUser);
-			
-			
-			//Check the username and password, return true if it's a match
-			if(thisUser.getUsername().equals(username))
-				if(thisUser.getPassword().equals(password))
+		//loops through User table and checks first username, then password.
+		for(int index=0; index < userList.size(); index++){
+			String currentUsername = (String)userList.get(index).getUsername();
+			if(currentUsername.equals(username)){
+				String currentPassword = (String)userList.get(index).getPassword();
+				if(currentPassword.equals(password)){
+					session.close();
 					return true;
-			
-			if((User)session.get(User.class, index+1) == null ){
-				another = false;
+				}
+				
 			}
-			
 		}
-		session.close();
 		
+		//failure condition, didn't find a user in the table that matched the parameters
+		session.close();
 		return false;
 	}
 	
@@ -176,54 +173,36 @@ public static List<ServiceStation> viewStations(String user, String password){
 	
 	
 	
-	public static ArrayList<Car> getCarsList(String user, String password){
+	public static List<Car> getCarsList(String user, String password){
 		
 		
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
 		Session session = sessionFactory.openSession();
 		
-		ArrayList<Car> list = new ArrayList();
-		
-		Car emptyCar = new Car();
-		list.add(0, emptyCar);
-		
-		//Loops until there are no more cars in the car table
-		boolean another = true;
-		for(int index=1; another; index++){
-			list.add(index, (Car)session.get(Car.class, index));
-			if((Car)session.get(Car.class, index+1) == null ){
-				another = false;
-			}
-		}
+		//HQL query runs and returns entire Car table - does not need IDs to be sequential
+		Query query = session.createQuery("from Car");
+		List<Car> carList = query.list();
 		
 		session.close();
 		
-		return list;
+		return carList;
 		
 	}
 	
 	
 	//Gets the list of  stations
-	public static ArrayList<ServiceStation> getStationsList(String user, String password){
+	public static List<ServiceStation> getStationsList(String user, String password){
 	
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
 		Session session = sessionFactory.openSession();
 		
-		ArrayList<ServiceStation> allList = new ArrayList();
-		
-		ServiceStation emptyStation = new ServiceStation();
-		allList.add(0, emptyStation);
-		boolean another = true;
-		int allIndex;
-		for(allIndex=1; another; allIndex++){
-			allList.add(allIndex, (ServiceStation)session.get(ServiceStation.class, allIndex));
-			if((ServiceStation)session.get(ServiceStation.class, allIndex+1) == null ){
-				another = false;
-			}
-		}
+		//HQL query runs and returns entire ServiceStation table - does not need IDs to be sequential
+		Query query = session.createQuery("from ServiceStation");
+		List<ServiceStation> stationList = query.list();
 		
 		session.close();
-		return allList;
+		
+		return stationList;
 		
 	}
 	
