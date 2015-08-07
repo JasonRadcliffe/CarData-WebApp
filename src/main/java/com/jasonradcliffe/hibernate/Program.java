@@ -123,19 +123,46 @@ public static List<ServiceStation> viewStations(String user, String password){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
+		//Run a query to get the car the fillup is on
+		Query carQuery = session.createQuery("from Car where CarID = "  + carID);
+		Car thisCar = (Car)carQuery.uniqueResult();
 		
 		FillUp fillUp = new FillUp();
 		fillUp.setCarID(carID);
+		
+		if(isFillUp){
+			//Figure out if the trip mileage they gave matches
+			double calculatedTripMileage = odometerReading - thisCar.getOdometerReading();
+			
+			if( Math.abs(tripMileage - calculatedTripMileage) > 1.1  ){
+				//must have missed something, use their trip mileage
+				fillUp.setTripMileage(tripMileage);
+				fillUp.setOdometerReading(odometerReading);
+				
+			}
+			else{
+				//the values are super close. Use the odometer reading
+				fillUp.setTripMileage(calculatedTripMileage);
+				fillUp.setOdometerReading(odometerReading);
+			}
+			
+			
+		}
+		
+		//Setting the car's odometer to what they entered in the fill-up
+		thisCar.setOdometerReading(odometerReading);
+		
+		
 		fillUp.setStationID(stationID);
 		fillUp.setPurchaseDate(purchaseDate);
 		fillUp.setGallonsPurchased(gallonsPurchased);
 		fillUp.setIsFillUp(isFillUp);
-		fillUp.setTripMileage(tripMileage);
-		fillUp.setOdometerReading(odometerReading);
+		
 		fillUp.setCost(cost);
 		
 		
-		
+		//saving both the car and the fill-up
+		session.save(thisCar);
 		session.save(fillUp);
 		
 		session.getTransaction().commit();
