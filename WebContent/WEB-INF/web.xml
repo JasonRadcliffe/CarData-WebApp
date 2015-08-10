@@ -117,4 +117,43 @@
   
   
   
+  
+  <servlet>
+  	<servlet-name>ViewReportsServlet</servlet-name>
+  	<servlet-class>com.jasonradcliffe.servlets.ViewReportsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ViewReportsServlet</servlet-name>
+  	<url-pattern>/View-Reports</url-pattern>
+  	<url-pattern>/ViewReports</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+  	<servlet-name>Mileage1Servlet</servlet-name>
+  	<servlet-class>com.jasonradcliffe.servlets.Mileage1Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Mileage1Servlet</servlet-name>
+  	<url-pattern>/View-Mileage1</url-pattern>
+  	<url-pattern>/ViewMileage1</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </web-app>

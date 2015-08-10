@@ -1,9 +1,7 @@
 package com.jasonradcliffe.hibernate;
 
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -29,7 +27,8 @@ public class Program {
 		
 		//uses HQL instead of SQL
 		Query query = session.createQuery("from User");
-		List<User> userList = query.list();
+		@SuppressWarnings("unchecked")
+		List<User> userList = (List<User>)query.list();
 		
 		//loops through User table and checks first username, then password.
 		for(int index=0; index < userList.size(); index++){
@@ -65,6 +64,7 @@ public class Program {
 		session.close();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<Car> viewCars(String user, String password){
 		
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
@@ -98,6 +98,7 @@ public class Program {
 	}
 	
 	
+@SuppressWarnings("unchecked")
 public static List<ServiceStation> viewStations(String user, String password){
 		
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
@@ -201,6 +202,7 @@ public static List<ServiceStation> viewStations(String user, String password){
 	
 	
 	
+	@SuppressWarnings("unchecked")
 	public static List<Car> getCarsList(String user, String password){
 		
 		
@@ -219,6 +221,7 @@ public static List<ServiceStation> viewStations(String user, String password){
 	
 	
 	//Gets the list of  stations
+	@SuppressWarnings("unchecked")
 	public static List<ServiceStation> getStationsList(String user, String password){
 	
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
