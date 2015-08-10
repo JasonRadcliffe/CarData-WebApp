@@ -131,11 +131,11 @@
   
   
   <servlet>
-  	<servlet-name>Mileage1Servlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.Mileage1Servlet</servlet-class>
+  	<servlet-name>Mileage1DataServlet</servlet-name>
+  	<servlet-class>com.jasonradcliffe.servlets.Mileage1DataServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Mileage1Servlet</servlet-name>
+  	<servlet-name>Mileage1DataServlet</servlet-name>
   	<url-pattern>/View-Mileage1</url-pattern>
   	<url-pattern>/ViewMileage1</url-pattern>
   </servlet-mapping>

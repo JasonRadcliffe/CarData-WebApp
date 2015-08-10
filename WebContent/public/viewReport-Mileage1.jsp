@@ -18,6 +18,101 @@
     <script src="public/ref/jquery-2.1.4.min.js" type="text/javascript"></script>
 
     <script src="public/ref/modernizr.js" type="text/javascript"></script>
+    
+    <!-- Importing the amCharts files -->
+	<script src="public/ref/amcharts.js" type="text/javascript"></script>
+	<script src="public/ref/amcharts-serial.js" type="text/javascript"></script>
+	<script src="public/ref/amcharts-dataloader.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+		var chartData = [{
+			"country": "USA",
+			"visits": 4252
+		}, {
+			"country": "China",
+			"visits": 1882
+		}, {
+			"country": "Japan",
+			"visits": 1809
+		}, {
+			"country": "Germany",
+			"visits": 1322
+		}, {
+			"country": "UK",
+			"visits": 1122
+		}, {
+			"country": "France",
+			"visits": 1114
+		}, {
+			"country": "India",
+			"visits": 984
+		}, {
+			"country": "Spain",
+			"visits": 711
+		}, {
+			"country": "Netherlands",
+			"visits": 665
+		}, {
+			"country": "Russia",
+			"visits": 580
+		}, {
+			"country": "South Korea",
+			"visits": 443
+		}, {
+			"country": "Canada",
+			"visits": 441
+		}, {
+			"country": "Brazil",
+			"visits": 395
+		}, {
+			"country": "Italy",
+			"visits": 386
+		}, {
+			"country": "Australia",
+			"visits": 384
+		}, {
+			"country": "Taiwan",
+			"visits": 338
+		}, {
+			"country": "Poland",
+			"visits": 328
+		}];
+		
+		AmCharts.ready(function(){
+			var chart = AmCharts.makeChart( "chartdiv", {
+				  "type": "serial",
+				  "dataLoader": {
+				    "url": "/CarDB/View-Mileage1"
+				  },
+				  "pathToImages": "http://www.amcharts.com/lib/images/",
+				  "categoryField": "category",
+				  "dataDateFormat": "YYYY-MM-DD",
+				  "startDuration": 1,
+				  "rotate": true,
+				  "categoryAxis": {
+				    "parseDates": true
+				  },
+				  "graphs": [ {
+				    "valueField": "value1",
+				    "bullet": "round",
+				    "bulletBorderColor": "#FFFFFF",
+				    "bulletBorderThickness": 2,
+				    "lineThickness ": 2,
+				    "lineAlpha": 0.5
+				  }, {
+				    "valueField": "value2",
+				    "bullet": "round",
+				    "bulletBorderColor": "#FFFFFF",
+				    "bulletBorderThickness": 2,
+				    "lineThickness ": 2,
+				    "lineAlpha": 0.5
+				  } ]
+				} );
+		});
+		
+	
+	</script>
+
 
 	<link rel="stylesheet" href="public/ref/app.css" type="text/css">
     <link rel="stylesheet" href="public/ref/menu.css" type="text/css">
@@ -50,7 +145,10 @@
 
             <h1>Mileage Report</h1>
 
-            <p>no data to display</p>
+            <p>no data to display, but here's a chart:</p>
+           	<div class="chartdiv" id="chartdiv">
+            </div>            
+	            
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br>
 

@@ -48,6 +48,23 @@ public class Program {
 		return false;
 	}
 	
+	public static List<FillUp> getFillUpList(String user, String password, int carID){
+
+		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		
+		Query query = session.createQuery("from FillUp where CarID=\'" + carID + "\'");
+		List<FillUp> data  = query.list();
+		System.out.println("got: " + data.size() + " entries!");
+		session.getTransaction().commit();
+		session.close();
+		
+		return data;
+		
+	}
+	
 	
 	public static void insertCar(String user, String password, String licensePlate,
 			String make, String model, int modelYear, double odometerReading){
