@@ -32,7 +32,7 @@ public class ViewReportsServlet extends HttpServlet {
 		if(user == null)
 			response.sendRedirect("/CarDB/Home");
 		else{
-			request.getRequestDispatcher("/public/viewReport-Mileage1.jsp").forward(request, response);
+			request.getRequestDispatcher("/public/viewReports.jsp").forward(request, response);
 		}
 		
 	}
