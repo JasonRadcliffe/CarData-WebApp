@@ -41,8 +41,8 @@ public class Mileage1DataServlet extends HttpServlet {
 		
 		String chartTypeParam = request.getParameter("chartType");
 		String jsonObject="";
-		DecimalFormat noZeroes = new DecimalFormat("#0");
-		DecimalFormat dollaDollaBill = new DecimalFormat("#0.00");
+		DecimalFormat noZeros = new DecimalFormat("#");
+		DecimalFormat dollaDollaBill = new DecimalFormat("#.00");
 		
 		int carID = 1;
 		List<FillUp> fillList = Program.getFillUpList(user, password, carID);
@@ -77,7 +77,7 @@ public class Mileage1DataServlet extends HttpServlet {
 			
 			jsonObject +="[";
 			for(int index=0; index < yearCount+1;  index++){
-				jsonObject+="{\"year\":\"" + noZeroes.format(yearTotals[index][0]) + "\", \"amount\":" + dollaDollaBill.format(yearTotals[index][1]) + "},";
+				jsonObject+="{\"year\":\"" + noZeros.format(yearTotals[index][0]) + "\", \"amount\":" + dollaDollaBill.format(yearTotals[index][1]) + "},";
 			}
 			jsonObject = jsonObject.substring(0, jsonObject.length() - 1);
 			jsonObject += "]";
