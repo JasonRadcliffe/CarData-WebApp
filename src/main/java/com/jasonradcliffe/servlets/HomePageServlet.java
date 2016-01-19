@@ -24,6 +24,13 @@ public class HomePageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet for homepage is running.");
 		HttpSession session = request.getSession();
+
+
+		//getting the userID from Program, via LoginServlet
+		int userID = (Integer)session.getAttribute("userID");
+		System.out.println("We seem to have gotten a value:" + userID);
+		request.setAttribute("userID", userID);
+		
 		if(session.getAttribute("user") == null)
 			response.sendRedirect("/CarDB/Home");
 		else

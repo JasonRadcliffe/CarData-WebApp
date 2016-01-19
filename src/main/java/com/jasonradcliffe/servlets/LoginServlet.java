@@ -42,12 +42,16 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("user");
 		String password = request.getParameter("password");
 		
-		if(Program.isValidUser(username, password)){
+		int userID = Program.isValidUser(username, password, 1);
+		
+		if (userID != -1){			
 			System.out.println("Valid!");
+			System.out.println(userID);
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("user", username);
 			session.setAttribute("password", password);
+			session.setAttribute("userID", userID);
 			//setting session to expire in 20 mins
 			session.setMaxInactiveInterval(20*60);
 			

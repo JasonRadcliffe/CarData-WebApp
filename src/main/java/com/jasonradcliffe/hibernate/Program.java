@@ -48,6 +48,40 @@ public class Program {
 		return false;
 	}
 	
+	//duplicate method of original isValidUser, but returns true/false as well as the user id
+	public static int isValidUser(String username, String password, int garbage){
+		
+		
+		//standard beginnings - using the username and pass for the database connection also		
+				SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(username, password);
+				
+				Session session = sessionFactory.openSession();
+				session.beginTransaction();
+				
+				//uses HQL instead of SQL
+				Query query = session.createQuery("from User");
+				@SuppressWarnings("unchecked")
+				List<User> userList = (List<User>)query.list();
+				
+				//loops through User table and checks first username, then password.
+				for(int index=0; index < userList.size(); index++){
+					String currentUsername = (String)userList.get(index).getUsername();
+					if(currentUsername.equals(username)){
+						String currentPassword = (String)userList.get(index).getPassword();
+						if(currentPassword.equals(password)){
+							session.close();
+							int userID = (Integer)userList.get(index).getUserID();
+							return userID;
+						}
+						
+					}
+				}
+				
+				//failure condition, didn't find a user in the table that matched the parameters
+				session.close();
+				return -1;
+	}
+	
 	public static List<FillUp> getFillUpList(String user, String password, int carID){
 
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
@@ -116,7 +150,7 @@ public class Program {
 	
 	
 @SuppressWarnings("unchecked")
-public static List<ServiceStation> viewStations(String user, String password){
+	public static List<ServiceStation> viewStations(String user, String password){
 		
 		SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(user, password);		
 		Session session = sessionFactory.openSession();

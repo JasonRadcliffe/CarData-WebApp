@@ -48,7 +48,12 @@
 
             <p>This Web App is your one stop shop to log car, driver, and mileage information from your household!
             View the menu to the left to see a list of links which are the different features this program offers.</p>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br>
+            
+            <p>
+            Your user id is: ${userID}
+            </p>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br>
             
 
