@@ -52,8 +52,11 @@ public class Program {
 	public static int isValidUser(String username, String password, int garbage){
 		
 		
-		//standard beginnings - using the username and pass for the database connection also		
+				//standard beginnings - using the username and pass for the database connection also		
 				SessionFactory sessionFactory = HibernateUtilities.getSessionFactory(username, password);
+				
+				//alternate - using the real user/pass
+				//SessionFactory sessionFactory = HibernateUtilities.getSessionFactory("realuser", "realpassword");
 				
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();

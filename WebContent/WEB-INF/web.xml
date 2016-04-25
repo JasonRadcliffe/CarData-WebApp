@@ -1,159 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>CarDB</display-name>
-  
-  
   <servlet>
-  	<servlet-name>HomePageServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.HomePageServlet</servlet-class>
+    <servlet-name>HomePageServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.HomePageServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>HomePageServlet</servlet-name>
-  	<url-pattern>/Main</url-pattern>
-  	<url-pattern>/main</url-pattern>
+    <servlet-name>HomePageServlet</servlet-name>
+    <url-pattern>/Main</url-pattern>
+    <url-pattern>/main</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.LoginServlet</servlet-class>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/Home</url-pattern>
-  	<url-pattern>/home</url-pattern>
-  	<url-pattern>/index</url-pattern>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/Home</url-pattern>
+    <url-pattern>/home</url-pattern>
+    <url-pattern>/index</url-pattern>
     <url-pattern>/login</url-pattern>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
-  
   <servlet>
-  	<servlet-name>NewCarServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.NewCarServlet</servlet-class>
+    <servlet-name>NewCarServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.NewCarServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>NewCarServlet</servlet-name>
-  	<url-pattern>/New-Car</url-pattern>
-  	<url-pattern>/NewCar</url-pattern>
+    <servlet-name>NewCarServlet</servlet-name>
+    <url-pattern>/New-Car</url-pattern>
+    <url-pattern>/NewCar</url-pattern>
   </servlet-mapping>
-    
-    
   <servlet>
-  	<servlet-name>ViewCarsServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.ViewCarsServlet</servlet-class>
+    <servlet-name>ViewCarsServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.ViewCarsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>ViewCarsServlet</servlet-name>
-  	<url-pattern>/View-Cars</url-pattern>
-  	<url-pattern>/ViewCars</url-pattern>
+    <servlet-name>ViewCarsServlet</servlet-name>
+    <url-pattern>/View-Cars</url-pattern>
+    <url-pattern>/ViewCars</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>NewDriverServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.NewDriverServlet</servlet-class>
+    <servlet-name>NewDriverServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.NewDriverServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>NewDriverServlet</servlet-name>
-  	<url-pattern>/New-Driver</url-pattern>
-  	<url-pattern>/NewDriver</url-pattern>
+    <servlet-name>NewDriverServlet</servlet-name>
+    <url-pattern>/New-Driver</url-pattern>
+    <url-pattern>/NewDriver</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
-  	<servlet-name>NewStationServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.NewStationServlet</servlet-class>
+    <servlet-name>NewStationServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.NewStationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>NewStationServlet</servlet-name>
-  	<url-pattern>/New-Station</url-pattern>
-  	<url-pattern>/NewStation</url-pattern>
+    <servlet-name>NewStationServlet</servlet-name>
+    <url-pattern>/New-Station</url-pattern>
+    <url-pattern>/NewStation</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
-  	<servlet-name>ViewStationsServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.ViewStationsServlet</servlet-class>
+    <servlet-name>ViewStationsServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.ViewStationsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>ViewStationsServlet</servlet-name>
-  	<url-pattern>/View-Stations</url-pattern>
-  	<url-pattern>/ViewStations</url-pattern>
+    <servlet-name>ViewStationsServlet</servlet-name>
+    <url-pattern>/View-Stations</url-pattern>
+    <url-pattern>/ViewStations</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
-  
   <servlet>
-  	<servlet-name>NewFillUpServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.NewFillUpServlet</servlet-class>
+    <servlet-name>NewFillUpServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.NewFillUpServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>NewFillUpServlet</servlet-name>
-  	<url-pattern>/FillUp</url-pattern>
-  	<url-pattern>/Fill-Up</url-pattern>
+    <servlet-name>NewFillUpServlet</servlet-name>
+    <url-pattern>/FillUp</url-pattern>
+    <url-pattern>/Fill-Up</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
   <servlet>
-  	<servlet-name>NewRepairServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.NewRepairServlet</servlet-class>
+    <servlet-name>NewRepairServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.NewRepairServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>NewRepairServlet</servlet-name>
-  	<url-pattern>/Maintenance</url-pattern>
-  	<url-pattern>/Repair</url-pattern>
-  	<url-pattern>/NewRepair</url-pattern>
-  	<url-pattern>/New-Repair</url-pattern>
+    <servlet-name>NewRepairServlet</servlet-name>
+    <url-pattern>/Maintenance</url-pattern>
+    <url-pattern>/Repair</url-pattern>
+    <url-pattern>/NewRepair</url-pattern>
+    <url-pattern>/New-Repair</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
   <servlet>
-  	<servlet-name>ViewReportsServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.ViewReportsServlet</servlet-class>
+    <servlet-name>ViewReportsServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.ViewReportsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>ViewReportsServlet</servlet-name>
-  	<url-pattern>/View-Reports</url-pattern>
-  	<url-pattern>/ViewReports</url-pattern>
+    <servlet-name>ViewReportsServlet</servlet-name>
+    <url-pattern>/View-Reports</url-pattern>
+    <url-pattern>/ViewReports</url-pattern>
   </servlet-mapping>
-  
-  
-  
   <servlet>
-  	<servlet-name>Mileage1DataServlet</servlet-name>
-  	<servlet-class>com.jasonradcliffe.servlets.Mileage1DataServlet</servlet-class>
+    <servlet-name>Mileage1DataServlet</servlet-name>
+    <servlet-class>com.jasonradcliffe.servlets.Mileage1DataServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Mileage1DataServlet</servlet-name>
-  	<url-pattern>/View-Mileage1</url-pattern>
-  	<url-pattern>/ViewMileage1</url-pattern>
+    <servlet-name>Mileage1DataServlet</servlet-name>
+    <url-pattern>/View-Mileage1</url-pattern>
+    <url-pattern>/ViewMileage1</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 </web-app>
